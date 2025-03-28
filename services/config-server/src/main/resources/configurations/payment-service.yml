@@ -1,0 +1,25 @@
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3333/payment_service
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+    database-platform:  org.hibernate.dialect.MySQLDialect
+
+  kafka:
+    producer:
+      bootstrap-servers:
+        - localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: paymentNotificationEvent:com.gnr.ecommorce.payment.event.record.PaymentNotificationEvent
+
+server:
+  port: 8060
