@@ -1,6 +1,7 @@
 package com.gnr.ecommorce.order.handler;
 
 import com.gnr.ecommorce.order.exception.BusinessException;
+import feign.FeignException;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.HashMap;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -17,10 +19,22 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handle(BusinessException exception) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMsg());
+    }
+
+    @ExceptionHandler(FeignException.FeignClientException.class)
+    public ResponseEntity<String> handle(FeignException.FeignClientException exception) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
 
-
+    @ExceptionHandler(HttpClientErrorException.class)
+    public ResponseEntity<String> handle(HttpClientErrorException exception) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handle(EntityNotFoundException exception) {

@@ -1,10 +1,12 @@
 package com.gnr.ecommorce.order.exception;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@RequiredArgsConstructor
 public class BusinessException extends RuntimeException {
     private final String msg;
 }

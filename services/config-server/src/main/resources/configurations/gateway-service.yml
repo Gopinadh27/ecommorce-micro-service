@@ -32,3 +32,13 @@ spring:
             - Path=/api/v1/payments/**
 server:
   port: 8222
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/micro-services
+
+#logging:
+#  level:
+#    org.springframework.cloud.gateway: DEBUG

@@ -26,6 +26,6 @@ server:
 
 services:
   config:
-    customer-service-url: http://localhost:8222/api/v1/customers
-    payment-service-url: http://localhost:8222/api/v1/payments
-    product-service-url: http://localhost:8222/api/v1/products
+    customer-service-url: ${API_GATE_WAY:http://localhost:8222}/api/v1/customers
+    payment-service-url: ${API_GATE_WAY:http://localhost:8222}/api/v1/payments
+    product-service-url: ${API_GATE_WAY:http://localhost:8222}/api/v1/products

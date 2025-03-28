@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
         for(int i=0; i < availableProductsInRepo.size(); i++) {
             var repoProduct = availableProductsInRepo.get(i);
             var requestedProduct = requestedProducts.get(i);
-            if(repoProduct.getAvailableQuantity() < requestedProduct.quantity()) {
+                if(repoProduct.getAvailableQuantity() < requestedProduct.quantity()) {
                 throw new ProductPurchaseException("Insufficient stock quantity for product with ID:: "+repoProduct.getId());
             }
             repoProduct.setAvailableQuantity(repoProduct.getAvailableQuantity()-requestedProduct.quantity());

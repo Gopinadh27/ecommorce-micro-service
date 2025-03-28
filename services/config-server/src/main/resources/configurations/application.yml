@@ -7,3 +7,12 @@ eureka:
   client:
     service-url:
       default-zone: http://${eureka.instance.hostname}/${server.port}/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+jwt:
+  issuer:
+    uri: http://localhost:9090/realms/micro-services

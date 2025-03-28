@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handle(ProductPurchaseException exception) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
+                .body(exception.getMsg());
     }
 
 
