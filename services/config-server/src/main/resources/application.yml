@@ -1,6 +1,7 @@
 server:
   port: 8888
 
+
 spring:
   application:
     name: config-server
@@ -15,3 +16,10 @@ spring:
         native:
           search-locations:
             - classpath:/configurations
+#        git:
+#          uri: https://github.com/Gopinadh27/ecommorce-micro-service.git       # Your Git repository URL
+#          username: xxxx                                                       # Optional: if the repository requires authentication
+#          password: xxxx                                                       # Optional: if the repository requires authentication
+#          clone-on-start: true                                                 # Whether to clone the repository when the server starts
+#          search-paths: 'config-server/src/main/resource/configurations/'      # Folder path inside the Git repo to search for configuration
+#          label: 'main'                                                        # Git branch to use (default is 'master' or 'main')
